@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Notes</title>
+    <script>
+        (function(){
+            const theme = localStorage.getItem("theme");
+            const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            if(theme === "dark" || (!theme && systemDark)){
+                document.documentElement.classList.add("dark");
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="notebook.css">
+</head>
+<body>
+    <div class="workspace">
+
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- SIDEBAR ESQUERDA -->
+        <aside class="sidebar">
+            <h2>Páginas</h2>
+            <input type="text" id="searchPage" placeholder="🔍 Pesquisar...">
+            <button id="filterFavorites" class="filter-favorites-btn">☆ Favoritos</button>
+            <div id="pagesList"></div>
+            <div class="sidebar-info">
+                <span id="totalPages">0 páginas</span>
+            </div>
+            <button id="new" class="new-page-btn">＋ Nova Página</button>
+        </aside>
+
+        <!-- CONTEÚDO CENTRAL -->
+        <div class="content">
+
+            <!-- BOTÃO VOLTAR ACIMA DO CADERNO -->
+            <div class="top-bar">
+                <button id="backButton">⬅ Voltar à Biblioteca</button>
+            </div>
+
+            <div class="book-container">
+                <div class="book">
+
+                    <!-- CAPA -->
+                    <div class="cover" id="cover">
+                        <h1 id="bookTitle"></h1>
+                        <p>Seu Bloco de Notas</p>
+                        <span>Clique em "Próxima" para começar</span>
+                    </div>
+
+                    <!-- PÁGINA -->
+                    <div class="page" id="page">
+                        <button id="favoriteBtn" class="favorite-btn">☆</button>
+                        <input
+                            type="text"
+                            id="title"
+                            class="page-title"
+                            placeholder="Título da página..."
+                        >
+                        <textarea id="note"></textarea>
+                        <div class="page-number" id="pageNumber">Página 1</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ASIDE DIREITO -->
+        <aside class="sidebar sidebar-right">
+            <h2>Ações</h2>
+
+            <div class="right-group">
+                <span class="right-label">Navegação</span>
+                <button id="prev">⬅ Anterior</button>
+                <button id="next">Próxima ➡</button>
+            </div>
+
+            <div class="right-group">
+                <span class="right-label">Página</span>
+                <select id="priority">
+                    <option value="normal">⚪ Normal</option>
+                    <option value="info">🔵 Estudo</option>
+                    <option value="success">🟢 Concluído</option>
+                    <option value="warning">🟡 Importante</option>
+                    <option value="danger">🔴 Urgente</option>
+                </select>
+                <button id="themeToggle">🌙 Tema</button>
+            </div>
+
+            <div class="right-group">
+                <span class="right-label">Arquivo</span>
+                <button id="exportAll">⬇ Exportar Caderno</button>
+                <button id="exportPage">⬇ Exportar Página</button>
+                <button id="importBtn">⬆ Importar</button>
+                <button id="resetBook">🗑 Zerar Caderno</button>
+                <input type="file" id="importFile" accept=".json" style="display:none">
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="notebook.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+
+    <main class="library">
+        <header class="header">
+            <h1>Notas de Estudo</h1>
+            <p>Seu espaço para organizar seus estudos.</p>
+        </header>
+        <div class="top-bar">
+            <input type="text" id="search" placeholder="Pesquisar caderno...">
+            <button id="themeToggle">🌙 Tema</button>
+        </div>
+
+        <section class="books">
+            <button class="book-card add-book" id="addBook">
+                <div class="card-row">
+                    <span class="emoji" style="font-size:42px;">➕</span>
+                    <div class="card-text">
+                        <h2>Novo Caderno</h2>
+                        <p>Criar uma nova tecnologia.</p>
+                    </div>
+                </div>
+            </button>
+        </section>
+    </main>
+
+    <!-- MODAL NOVO CADERNO -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h2>Novo Caderno</h2>
+            <p class="modal-subtitle">Preencha as informações do caderno</p>
+
+            <div class="modal-field">
+                <label>Nome</label>
+                <input type="text" id="modalName" placeholder="Ex: Python, Git, SQL...">
+            </div>
+
+            <div class="modal-field">
+                <label>Descrição</label>
+                <input type="text" id="modalDesc" placeholder="Ex: Comandos e conceitos...">
+            </div>
+
+            <!-- ABAS: EMOJI ou IMAGEM -->
+            <div class="modal-field">
+                <label>Ícone</label>
+                <div class="icon-tabs">
+                    <button class="icon-tab active" id="tabEmoji">😀 Emoji</button>
+                    <button class="icon-tab" id="tabImage">🖼 Imagem</button>
+                </div>
+
+                <!-- PAINEL EMOJI -->
+                <div class="icon-panel" id="panelEmoji">
+                    <input type="text" id="modalEmoji" placeholder="Ex: 🐍 ⚡ 🗄️" maxlength="4">
+                </div>
+
+                <!-- PAINEL IMAGEM -->
+                <div class="icon-panel hidden" id="panelImage">
+                    <label class="upload-area" id="uploadArea">
+                        <span id="uploadLabel">Clique para escolher uma imagem</span>
+                        <img id="previewImg" class="hidden" alt="Preview">
+                        <input type="file" id="modalImage" accept="image/*" style="display:none">
+                    </label>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button id="modalCancel" class="modal-btn cancel">Cancelar</button>
+                <button id="modalConfirm" class="modal-btn confirm">Criar Caderno</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CONFIRMAÇÃO DELETAR -->
+    <div class="modal-overlay" id="deleteOverlay">
+        <div class="modal">
+            <h2>Deletar Caderno</h2>
+            <p class="modal-subtitle" id="deleteMessage">Tem certeza? As anotações também serão apagadas.</p>
+            <div class="modal-actions">
+                <button id="deleteCancelBtn" class="modal-btn cancel">Cancelar</button>
+                <button id="deleteConfirmBtn" class="modal-btn danger">Deletar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
